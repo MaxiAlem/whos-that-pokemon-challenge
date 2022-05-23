@@ -9,7 +9,10 @@ main {
 
 img {
   image-rendering: pixelated;
-  filter: brightness(0);
+  filter: brightness(1);
   /* transform: scale(3); */
   width: 70%;
+}
+.pokeimg{
+  filter: brightness(0);
 }
