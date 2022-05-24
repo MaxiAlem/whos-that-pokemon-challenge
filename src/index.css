@@ -1,3 +1,11 @@
+@import "../node_modules/nes.css/css/nes.css";
+
+body{
+  background-image: url('BG.png');
+  image-rendering: pixelated;
+  background-attachment: fixed;
+  background-size: cover;
+}
 main {
   display: flex;
   align-items: center;
@@ -9,10 +17,31 @@ main {
 
 img {
   image-rendering: pixelated;
-  filter: brightness(1);
+  filter: brightness(0);
   /* transform: scale(3); */
   width: 70%;
 }
 .pokeimg{
-  filter: brightness(0);
+  /* filter: brightness(0); */
+  animation-duration: 500ms;
+  animation-name: showpkmn;
+  filter: brightness(1);
 }
+
+@keyframes showpkmn {
+
+  to {
+    filter: brightness(0)
+}
+50% {
+  filter: brightness(0.5)
+}
+
+to{
+    filter: brightness(1)
+}
+}
+  h3,.pokeMsg{
+    text-align: center;
+  };
+

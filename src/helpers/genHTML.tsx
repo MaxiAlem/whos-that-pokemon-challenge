@@ -1,6 +1,9 @@
+declare var newpkmn: any
 
 import clearHtml from './clearHTML'
 import getData from './getData'
+
+
 import {Pokemon} from '../types'
 
 
@@ -14,34 +17,49 @@ function genHTML(res:object){
    //gen html
  
     const box = document.createElement('div');
- 
+    const p = document.createElement('h1');
+    p.textContent='Quien es ese pokemon?'
+
     const pokeGuess = document.createElement('form')
+    pokeGuess.className= 'nes-field is-inline'
   
     const textGuess = document.createElement('input')
     textGuess.setAttribute('type', 'text');
-    textGuess.setAttribute('autocomplete', 'off')
+    textGuess.setAttribute('autocomplete', 'off');
+    textGuess.className = 'textGuess nes-input is-inline'
   
     const submitGuess = document.createElement('input')
     submitGuess.setAttribute('type', 'submit');
-    submitGuess.value = 'adivinar'
+    submitGuess.value = 'adivinar';
+    submitGuess.className = 'nes-btn is-primary submitGuess'
     submitGuess.onclick =async function(e){
       e.preventDefault()
-      if(textGuess.value === pokmn.name){
+      if(textGuess.value.replace(/[^a-zA-Z]/g,"").toLowerCase()=== pokmn.name){
         console.log('bien')
          
          //pokeImg.className = 'pokeImg'
-         pokeImg.classList.remove('pokeimg')
+         pokeImg.classList.add('pokeimg')
+         pokeMsg.innerHTML= `<i class="nes-pokeball "></i>
+         <p class="nes-text is-primary"> Correcto!</p>`
+         
+         submitGuess.classList.add('is-disabled')
         setTimeout(() => {
             clearHtml()
          getData()
-        }, 3000); 
+        }, 2000); 
       }else{
         console.log('mal')
-        clearHtml()
-        await getData()
-         
- 
+        pokeMsg.innerHTML= `<i class="nes-icon close is-small"></i>
+        <p class="nes-text is-primary"> Incorrecto!</p>`
+
+
+        submitGuess.classList.add('is-disabled')
         
+        
+        setTimeout(() => {
+            clearHtml()
+         getData()
+        }, 2000); 
       }
       
     }
@@ -54,17 +72,28 @@ function genHTML(res:object){
    //  pokeId.innerHTML = `${pokmn.id}`;
   
     const pokeImg = document.createElement('img')
-    pokeImg.className= 'pokeimg'
+    //pokeImg.className= 'pokeimg'
     pokeImg.src = `${pokmn.image}`;
+    
+    const pokeMsg = document.createElement('div')
+    pokeMsg.className= 'pokeMsg'
+    
   
-  
+    box.appendChild(p);
     box.appendChild(pokeImg);
+    box.appendChild(pokeMsg);
     box.appendChild(pokeGuess);
-   // box.appendChild(pokeId);
+    
     
   
     newpkmn.appendChild(box)
-  
+
+
  }
+
+function msg(msg:string){
+    return msg
+}
+ 
 
  export default genHTML

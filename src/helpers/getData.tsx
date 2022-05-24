@@ -3,8 +3,6 @@ import clearHtml from "./clearHTML";
 import genHTML from "./genHTML";
 const {random} = api
   
-  
-
     
   //getData()
   async function getData(){
