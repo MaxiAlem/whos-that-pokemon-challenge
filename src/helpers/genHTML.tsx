@@ -35,31 +35,28 @@ function genHTML(res:object){
     submitGuess.onclick =async function(e){
       e.preventDefault()
       if(textGuess.value.replace(/[^a-zA-Z]/g,"").toLowerCase()=== pokmn.name){
-        console.log('bien')
-         
-         //pokeImg.className = 'pokeImg'
          pokeImg.classList.add('pokeimg')
-         pokeMsg.innerHTML= `<i class="nes-pokeball "></i>
-         <p class="nes-text is-primary"> Correcto!</p>`
+         pokeMsg.innerHTML= `
+         <p class="nes-text is-primary"> Correcto!</p>
+         `
          
          submitGuess.classList.add('is-disabled')
-        setTimeout(() => {
-            clearHtml()
-         getData()
-        }, 2000); 
+        // setTimeout(() => {
+        //     clearHtml()
+        //  getData()
+        // }, 2000); 
       }else{
-        console.log('mal')
-        pokeMsg.innerHTML= `<i class="nes-icon close is-small"></i>
-        <p class="nes-text is-primary"> Incorrecto!</p>`
-
+        pokeMsg.innerHTML= `
+        <p class="nes-text is-primary "> Incorrecto!</p>
+        `
 
         submitGuess.classList.add('is-disabled')
         
         
-        setTimeout(() => {
-            clearHtml()
-         getData()
-        }, 2000); 
+        // setTimeout(() => {
+        //     clearHtml()
+        //  getData()
+        // }, 2000); 
       }
       
     }
@@ -77,23 +74,13 @@ function genHTML(res:object){
     
     const pokeMsg = document.createElement('div')
     pokeMsg.className= 'pokeMsg'
-    
-  
+      
     box.appendChild(p);
     box.appendChild(pokeImg);
     box.appendChild(pokeMsg);
     box.appendChild(pokeGuess);
-    
-    
-  
-    newpkmn.appendChild(box)
-
-
- }
-
-function msg(msg:string){
-    return msg
-}
  
+    newpkmn.appendChild(box)
+ }
 
  export default genHTML
