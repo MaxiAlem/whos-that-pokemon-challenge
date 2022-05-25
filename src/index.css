@@ -51,3 +51,6 @@ to{
 nav{
   position: fixed;
 }
+#navBtns{
+  margin-left: auto;
+}

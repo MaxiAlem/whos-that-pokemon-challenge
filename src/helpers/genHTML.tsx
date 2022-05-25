@@ -1,14 +1,15 @@
 declare var newpkmn: any
 
-import clearHtml from './clearHTML'
-import getData from './getData'
-
+import { useState } from 'react'
 
 import {Pokemon} from '../types'
 
 
+
 function genHTML(res:object){
-   
+
+
+  
     // const {name, id, image}:{name:string, id:number, image:string} = res
     const pokmn : Pokemon = res
     console.log(pokmn.name)
@@ -37,17 +38,18 @@ function genHTML(res:object){
       if(textGuess.value.replace(/[^a-zA-Z]/g,"").toLowerCase()=== pokmn.name){
          pokeImg.classList.add('pokeimg')
          pokeMsg.innerHTML= `
-         <p class="nes-text is-primary"> Correcto!</p>
+         <p id='pokeMsg' class="nes-text is-disabled">CORRECTO!</p>
          `
-         
+      
          submitGuess.classList.add('is-disabled')
+        
         // setTimeout(() => {
         //     clearHtml()
         //  getData()
         // }, 2000); 
       }else{
         pokeMsg.innerHTML= `
-        <p class="nes-text is-primary "> Incorrecto!</p>
+        <p id='pokeMsg' class="nes-text is-disabled ">INCORRECTO!</p>
         `
 
         submitGuess.classList.add('is-disabled')
@@ -58,7 +60,7 @@ function genHTML(res:object){
         //  getData()
         // }, 2000); 
       }
-      
+     
     }
   
     pokeGuess.appendChild(textGuess);
