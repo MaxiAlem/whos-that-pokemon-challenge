@@ -4,7 +4,7 @@ import getData from "../helpers/getData";
 const startButton = () => {
   function StartButton(){
         const StarBtn = document.getElementById('start')
-        StarBtn.textContent='reintentar'
+        StarBtn!.textContent='reintentar'
         getData()
     }
     return (
